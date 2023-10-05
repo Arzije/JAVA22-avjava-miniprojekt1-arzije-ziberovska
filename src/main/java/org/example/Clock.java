@@ -144,15 +144,15 @@ import java.util.Scanner;
                 System.out.println("The time is: " + clockimpl.getTime());
                 changeMode();
 
-            }else if (current_state == STATE.ChangeTime){
-                System.out.println("");
-                System.out.println("The time is: " + clockimpl.getTime());
-                changeMode();
+            }
 
-            }else if (current_state == STATE.DisplayDate) {
+            else if (current_state == STATE.DisplayDate) {
                 System.out.println("");
                 System.out.println("Current state: " + current_state);
-                clockimpl.setDate(LocalDate.now());
+
+                if(!dateHasBeenSet){
+                    clockimpl.setDate(LocalDate.now());
+                }
                 System.out.println("");
                 System.out.println("The date is :" + clockimpl.getDate());
                 changeMode();
