@@ -18,9 +18,10 @@ public class Clock implements StateActions {
     private ClockDate date = new ClockDate();
     private boolean timeHasBeenSet = false;
     private boolean dateHasBeenSet = false;
-
     private UserInterface ui = new UserInterface();
     private StateManager stateManager = new StateManager();
+    private ActionHandler actionHandler = new ActionHandler(ui, stateManager, this);
+
 
     @Override
     public void changeMode() {
@@ -40,93 +41,20 @@ public class Clock implements StateActions {
 
         switch (currentState) {
             case DisplayTime:
-                handleDisplayTimeActions(input);
+                actionHandler.handleDisplayTimeActions(input);
                 break;
             case ChangeTime:
-                handleChangeTimeActions(input);
+                actionHandler.handleChangeTimeActions(input);
                 break;
             case DisplayDate:
-                handleDisplayDateActions(input);
+                actionHandler.handleDisplayDateActions(input);
                 break;
             case ChangeDate:
-                handleChangeDateActions(input);
+                actionHandler.handleChangeDateActions(input);
                 break;
         }
     }
 
-
-    private void handleDisplayTimeActions(String input) {
-        switch (input) {
-            case "1":
-                set();
-                break;
-            case "2":
-                stateManager.changeState(STATE.ChangeTime);
-                break;
-            case "3":
-                stateManager.changeState(STATE.DisplayDate);
-                break;
-            case "q":
-                System.exit(0);
-                break;
-            default:
-                ui.showError("Invalid choice.");
-                break;
-        }
-    }
-
-    private void handleChangeTimeActions(String input) {
-        switch (input) {
-            case "1":
-                readyToSet();
-                break;
-            case "2":
-                stateManager.changeState(STATE.DisplayTime);
-                break;
-            case "q":
-                System.exit(0);
-                break;
-            default:
-                ui.showError("Invalid choice.");
-                break;
-        }
-    }
-
-
-    private void handleDisplayDateActions(String input) {
-        switch (input) {
-            case "1":
-                set();
-                break;
-            case "2":
-                stateManager.changeState(STATE.ChangeDate);
-                break;
-            case "q":
-                System.exit(0);
-                break;
-            default:
-                ui.showError("Invalid choice.");
-                break;
-        }
-    }
-
-    private void handleChangeDateActions(String input) {
-        switch (input) {
-            case "1":
-                readyToSet();
-                break;
-            case "2":
-                stateManager.changeState(STATE.DisplayDate);
-                set();
-                break;
-            case "q":
-                System.exit(0);
-                break;
-            default:
-                ui.showError("Invalid choice.");
-                break;
-        }
-    }
 
     @Override
     public void set() {
