@@ -25,7 +25,7 @@ public class ActionHandler {
                 stateManager.changeState(STATE.ChangeTime);
                 break;
             case "3":
-                stateManager.changeState(STATE.DisplayDate);
+                clock.changeMode();
                 break;
             case "q":
                 System.exit(0);
@@ -60,6 +60,9 @@ public class ActionHandler {
                 break;
             case "2":
                 stateManager.changeState(STATE.ChangeDate);
+                break;
+            case "3":
+                clock.changeMode();
                 break;
             case "q":
                 System.exit(0);

@@ -82,10 +82,6 @@ public class Clock implements StateActions {
                 }
                 ui.showDate(date.getDate());
                 break;
-
-            case ChangeTime, ChangeDate:
-                readyToSet();
-                break;
         }
         showOptions();
     }
@@ -106,6 +102,7 @@ public class Clock implements StateActions {
                     timeHasBeenSet = true;
                     ui.displayMessage("Time successfully set!");
                     stateManager.changeState(STATE.DisplayTime);
+
                 } catch (DateTimeParseException e) {
                     ui.displayMessage("Invalid time format. Please use HH:mm format.");
                 }
@@ -121,6 +118,7 @@ public class Clock implements StateActions {
                     dateHasBeenSet = true;
                     ui.displayMessage("Date successfully set!");
                     stateManager.changeState(STATE.DisplayDate);
+
                 } catch (DateTimeParseException e) {
                     ui.displayMessage("Invalid date format. Please use yyyy-MM-dd format.");
                 }

@@ -11,10 +11,11 @@ public class UserInterface {
     public void displayMenu(STATE state) {
         switch (state) {
             case DisplayTime:
+                System.out.println("\tCurrent state: " + state);
                 System.out.println("""
-                            Current state: Display Time
                             
                             What would you like to do?
+                            
                             1. Display time
                             2. Change time
                             3. Display date
@@ -23,10 +24,11 @@ public class UserInterface {
                 break;
 
             case ChangeTime:
+                System.out.println("\tCurrent state: " + state);
                 System.out.println("""
-                            Current state: Change Time
-
+                            
                             What would you like to do?
+                            
                             1. Change time
                             2. Go back to display time
                             q. Quit
@@ -34,21 +36,24 @@ public class UserInterface {
                 break;
 
             case DisplayDate:
+                System.out.println("\tCurrent state: " + state);
                 System.out.println("""
-                            Current state: Display Date
                             
                             What would you like to do?
+                            
                             1. Display date
                             2. Change date
+                            3. Display Time
                             q. Quit
                         """);
                 break;
 
             case ChangeDate:
+                System.out.println("\tCurrent state: " + state);
                 System.out.println("""
-                            Current state: Change Date
                             
                             What would you like to do?
+                            
                             1. Change date
                             2. Go back to display date
                             q. Quit
