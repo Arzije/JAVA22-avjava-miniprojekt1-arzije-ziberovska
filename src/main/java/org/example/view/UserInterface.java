@@ -65,15 +65,17 @@ public class UserInterface {
     }
 
     public void showTime(LocalTime time) {
-        System.out.println("The time is: " + time);
+        System.out.println("\tThe time is : " + time);
     }
 
     public void showDate(LocalDate date) {
-        System.out.println("The date is: " + date);
+        System.out.println("\tThe date is : " + date);
+
     }
 
     public void showError(String error) {
-        System.out.println("Error: " + error);
+        System.out.println("\tError : " + error);
+
     }
 
     public void displayPrompt(String message) {
