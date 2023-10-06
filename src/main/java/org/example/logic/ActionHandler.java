@@ -80,7 +80,6 @@ public class ActionHandler {
                 break;
             case "2":
                 stateManager.changeState(STATE.DisplayDate);
-                clock.set();
                 break;
             case "q":
                 System.exit(0);
