@@ -1,6 +1,6 @@
 package org.example.interfaces;
 
-public interface StateInterface {
+public interface StateActions {
 
     abstract void changeMode();
 
