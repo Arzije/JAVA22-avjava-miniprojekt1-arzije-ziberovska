@@ -14,14 +14,22 @@ import java.time.temporal.ChronoUnit;
 
 public class Clock implements StateActions {
 
-    private ClockTime time = new ClockTime();
-    private ClockDate date = new ClockDate();
+    private ClockTime time;
+    private ClockDate date;
     private boolean timeHasBeenSet = false;
     private boolean dateHasBeenSet = false;
-    private UserInterface ui = new UserInterface();
-    private StateManager stateManager = new StateManager();
-    private ActionHandler actionHandler = new ActionHandler(ui, stateManager, this);
+    private UserInterface ui;
+    private StateManager stateManager;
+    private ActionHandler actionHandler;
 
+
+    public Clock(UserInterface ui, StateManager stateManager, ClockTime time, ClockDate date) {
+        this.ui = ui;
+        this.stateManager = stateManager;
+        this.time = time;
+        this.date = date;
+        this.actionHandler = new ActionHandler(ui, stateManager, this);
+    }
 
     @Override
     public void changeMode() {
@@ -75,11 +83,7 @@ public class Clock implements StateActions {
                 ui.showDate(date.getDate());
                 break;
 
-            case ChangeTime:
-                readyToSet();
-                break;
-
-            case ChangeDate:
+            case ChangeTime, ChangeDate:
                 readyToSet();
                 break;
         }
