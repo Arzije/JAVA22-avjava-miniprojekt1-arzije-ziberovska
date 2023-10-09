@@ -14,14 +14,13 @@ import java.time.temporal.ChronoUnit;
 
 public class Clock implements StateActions {
 
-    private ClockTime time;
-    private ClockDate date;
     private boolean timeHasBeenSet = false;
     private boolean dateHasBeenSet = false;
+    private ClockTime time;
+    private ClockDate date;
     private UserInterface ui;
     private StateManager stateManager;
     private ActionHandler actionHandler;
-
 
     public Clock(UserInterface ui, StateManager stateManager, ClockTime time, ClockDate date) {
         this.ui = ui;
@@ -93,34 +92,34 @@ public class Clock implements StateActions {
 
         switch (currentState) {
             case ChangeTime:
-                ui.displayPrompt("What would you like the time to be? Please write it in HH:mm format, for example (e.g. 15:30):");
+                ui.displayPrompt("\tWhat would you like the time to be? Please write it in HH:mm format, for example (e.g. 15:30):");
                 String inputTime = ui.getUserInput();
 
                 try {
                     LocalTime newTime = LocalTime.parse(inputTime);
                     time.setTime(newTime);
                     timeHasBeenSet = true;
-                    ui.displayMessage("Time successfully set!");
+                    ui.displayMessage("\tTime successfully set!");
                     stateManager.changeState(STATE.DisplayTime);
 
                 } catch (DateTimeParseException e) {
-                    ui.displayMessage("Invalid time format. Please use HH:mm format.");
+                    ui.displayMessage("\tInvalid time format. Please use HH:mm format.");
                 }
                 break;
 
             case ChangeDate:
-                ui.displayPrompt("What date would you like it to be? Please write it in yyyy-MM-dd format, for example (e.g. 2023-10-04):");
+                ui.displayPrompt("\tWhat date would you like it to be? Please write it in yyyy-MM-dd format, for example (e.g. 2023-10-04):");
                 String inputDate = ui.getUserInput();
 
                 try {
                     LocalDate newDate = LocalDate.parse(inputDate);
                     date.setDate(newDate);
                     dateHasBeenSet = true;
-                    ui.displayMessage("Date successfully set!");
+                    ui.displayMessage("\tDate successfully set!");
                     stateManager.changeState(STATE.DisplayDate);
 
                 } catch (DateTimeParseException e) {
-                    ui.displayMessage("Invalid date format. Please use yyyy-MM-dd format.");
+                    ui.displayMessage("\tInvalid date format. Please use yyyy-MM-dd format.");
                 }
                 break;
         }
