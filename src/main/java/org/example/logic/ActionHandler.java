@@ -17,16 +17,25 @@ public class ActionHandler {
     }
 
     public void handleDisplayTimeActions(String input) {
+//        clock.set();
         switch (input) {
+//            case "1":
+//                clock.set();
+//                break;
             case "1":
-                clock.set();
+                stateManager.changeState(STATE.ChangeTime);
+                clock.readyToSet();
                 break;
             case "2":
-                stateManager.changeState(STATE.ChangeTime);
-                break;
-            case "3":
                 clock.changeMode();
                 break;
+                ////
+            case "3":
+
+                if (stateManager.getCurrentState() == STATE.DisplayTime){
+                    ui.showError("Invalid choice");
+                    clock.showOptions();
+                }
             case "q":
                 System.exit(0);
                 break;
@@ -36,34 +45,53 @@ public class ActionHandler {
         }
     }
 
-    public void handleChangeTimeActions(String input) {
-        switch (input) {
-            case "1":
-                clock.readyToSet();
-                break;
-            case "2":
-                stateManager.changeState(STATE.DisplayTime);
-                break;
-            case "q":
-                System.exit(0);
-                break;
-            default:
-                ui.showError("Invalid choice.");
-                break;
-        }
-    }
+//    public void handleChangeTimeActions(String input) {
+//        switch (input) {
+//            case "1":
+//                clock.readyToSet();
+//                break;
+//            case "2":
+//                stateManager.changeState(STATE.DisplayTime);
+//                break;
+//                //
+//            case "3":
+//                if (stateManager.getCurrentState() == STATE.ChangeTime) {
+//                    ui.showError("Invalid choice");
+//                    clock.showOptions();
+//                }
+//                //
+//            case "4":
+//                if (stateManager.getCurrentState() == STATE.ChangeTime) {
+//                    ui.showError("Invalid choice");
+//                    clock.showOptions();
+//                }
+//            case "q":
+//                System.exit(0);
+//                break;
+//            default:
+//                ui.showError("Invalid choice.");
+//                break;
+//        }
+//    }
 
     public void handleDisplayDateActions(String input) {
         switch (input) {
+//            case "1":
+//                clock.set();
+//                break;
             case "1":
-                clock.set();
+                stateManager.changeState(STATE.ChangeDate);
+                clock.readyToSet();
                 break;
             case "2":
-                stateManager.changeState(STATE.ChangeDate);
-                break;
-            case "3":
                 clock.changeMode();
                 break;
+                //
+            case "3":
+                if (stateManager.getCurrentState() == STATE.DisplayDate) {
+                    ui.showError("Invalid choice");
+                    clock.showOptions();
+                }
             case "q":
                 System.exit(0);
                 break;
@@ -73,20 +101,26 @@ public class ActionHandler {
         }
     }
 
-    public void handleChangeDateActions(String input) {
-        switch (input) {
-            case "1":
-                clock.readyToSet();
-                break;
-            case "2":
-                stateManager.changeState(STATE.DisplayDate);
-                break;
-            case "q":
-                System.exit(0);
-                break;
-            default:
-                ui.showError("Invalid choice.");
-                break;
-        }
-    }
+//    public void handleChangeDateActions(String input) {
+//        switch (input) {
+//            case "1":
+//                clock.readyToSet();
+//                break;
+//            case "2":
+//                stateManager.changeState(STATE.DisplayDate);
+//                break;
+//                //
+//            case "3":
+//                if (stateManager.getCurrentState() == STATE.ChangeTime) {
+//                    ui.showError("Invalid choice");
+//                    clock.showOptions();
+//                }
+//            case "q":
+//                System.exit(0);
+//                break;
+//            default:
+//                ui.showError("Invalid choice.");
+//                break;
+//        }
+//    }
 }

@@ -16,24 +16,28 @@ public class UserInterface {
                             
                             What would you like to do?
                             
-                            1. Display time
-                            2. Change time
-                            3. Display date
+                            1. Change time
+                            2. Display date
+                            3. Change date
                             q. Quit
                         """);
                 break;
 
-            case ChangeTime:
-                System.out.println("\tCurrent state: " + state);
-                System.out.println("""
-                            
-                            What would you like to do?
-                            
-                            1. Change time
-                            2. Go back to display time
-                            q. Quit
-                        """);
-                break;
+//            case ChangeTime:
+//                System.out.println("\tCurrent state: " + state);
+//                System.out.println("""
+//
+//                            What would you like to do?
+//
+//                            1. Change time
+//                            2. Go back to display time
+//                            //
+//                            3. Display date
+//                            //
+//                            4. Change date
+//                            q. Quit
+//                        """);
+//                break;
 
             case DisplayDate:
                 System.out.println("\tCurrent state: " + state);
@@ -41,24 +45,28 @@ public class UserInterface {
                             
                             What would you like to do?
                             
-                            1. Display date
-                            2. Change date
-                            3. Display Time
+                            1. Change date
+                            2. Display Time
+                            3. Change time
                             q. Quit
                         """);
                 break;
 
-            case ChangeDate:
-                System.out.println("\tCurrent state: " + state);
-                System.out.println("""
-                            
-                            What would you like to do?
-                            
-                            1. Change date
-                            2. Go back to display date
-                            q. Quit
-                        """);
-                break;
+//            case ChangeDate:
+//                System.out.println("\tCurrent state: " + state);
+//                System.out.println("""
+//
+//                            What would you like to do?
+//
+//                            1. Change date
+//                            2. Go back to display date
+//                            //
+//                            3. Display time
+//                            //
+//                            4. Change time
+//                            q. Quit
+//                        """);
+//                break;
 
             default:
                 System.out.println("Invalid state.");

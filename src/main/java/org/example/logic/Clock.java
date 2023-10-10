@@ -38,6 +38,7 @@ public class Clock implements StateActions {
         } else if (currentState == STATE.DisplayDate) {
             stateManager.changeState(STATE.DisplayTime);
         }
+        set();
     }
 
     public void showOptions() {
@@ -50,15 +51,15 @@ public class Clock implements StateActions {
             case DisplayTime:
                 actionHandler.handleDisplayTimeActions(input);
                 break;
-            case ChangeTime:
-                actionHandler.handleChangeTimeActions(input);
-                break;
+//            case ChangeTime:
+//                actionHandler.handleChangeTimeActions(input);
+//                break;
             case DisplayDate:
                 actionHandler.handleDisplayDateActions(input);
                 break;
-            case ChangeDate:
-                actionHandler.handleChangeDateActions(input);
-                break;
+//            case ChangeDate:
+////                actionHandler.handleChangeDateActions(input);
+//                break;
         }
     }
 
@@ -124,11 +125,16 @@ public class Clock implements StateActions {
                 break;
         }
 
-        showOptions();
+        set();
     }
 
 
     public void start() {
+
+        if (stateManager.getCurrentState() == STATE.DisplayTime){
+            set();
+        }
+
         while (true) {
             showOptions();
         }
