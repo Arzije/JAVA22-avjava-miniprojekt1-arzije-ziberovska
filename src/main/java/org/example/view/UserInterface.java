@@ -23,22 +23,6 @@ public class UserInterface {
                         """);
                 break;
 
-//            case ChangeTime:
-//                System.out.println("\tCurrent state: " + state);
-//                System.out.println("""
-//
-//                            What would you like to do?
-//
-//                            1. Change time
-//                            2. Go back to display time
-//                            //
-//                            3. Display date
-//                            //
-//                            4. Change date
-//                            q. Quit
-//                        """);
-//                break;
-
             case DisplayDate:
                 System.out.println("\tCurrent state: " + state);
                 System.out.println("""
@@ -52,24 +36,8 @@ public class UserInterface {
                         """);
                 break;
 
-//            case ChangeDate:
-//                System.out.println("\tCurrent state: " + state);
-//                System.out.println("""
-//
-//                            What would you like to do?
-//
-//                            1. Change date
-//                            2. Go back to display date
-//                            //
-//                            3. Display time
-//                            //
-//                            4. Change time
-//                            q. Quit
-//                        """);
-//                break;
-
             default:
-                System.out.println("Invalid state.");
+                System.out.println("\tInvalid state.");
         }
     }
 
@@ -83,19 +51,17 @@ public class UserInterface {
 
     public void showDate(LocalDate date) {
         System.out.println("\tThe date is : " + date);
-
     }
 
     public void showError(String error) {
         System.out.println("\tError : " + error);
-
     }
 
     public void displayPrompt(String message) {
-        System.out.println(message);
+        System.out.println("\t" + message);
     }
 
     public void displayMessage(String message) {
-        System.out.println(message);
+        System.out.println("\t" + message);
     }
 }

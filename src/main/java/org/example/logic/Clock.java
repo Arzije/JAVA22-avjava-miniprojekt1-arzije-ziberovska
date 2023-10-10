@@ -51,15 +51,10 @@ public class Clock implements StateActions {
             case DisplayTime:
                 actionHandler.handleDisplayTimeActions(input);
                 break;
-//            case ChangeTime:
-//                actionHandler.handleChangeTimeActions(input);
-//                break;
+
             case DisplayDate:
                 actionHandler.handleDisplayDateActions(input);
                 break;
-//            case ChangeDate:
-////                actionHandler.handleChangeDateActions(input);
-//                break;
         }
     }
 
@@ -71,7 +66,7 @@ public class Clock implements StateActions {
         switch (currentState) {
             case DisplayTime:
                 if (!timeHasBeenSet) {
-                    time.setTime(LocalTime.now().truncatedTo(ChronoUnit.MINUTES));
+                    time.setTime(LocalTime.now().truncatedTo(ChronoUnit.SECONDS));
                 }
                 ui.showTime(time.getTime());
                 break;
@@ -93,34 +88,36 @@ public class Clock implements StateActions {
 
         switch (currentState) {
             case ChangeTime:
-                ui.displayPrompt("\tWhat would you like the time to be? Please write it in HH:mm format, for example (e.g. 15:30):");
+                ui.displayPrompt("What would you like the time to be? Please write it in HH:mm:ss format, for example (e.g. 15:30:44):");
                 String inputTime = ui.getUserInput();
 
                 try {
                     LocalTime newTime = LocalTime.parse(inputTime);
                     time.setTime(newTime);
                     timeHasBeenSet = true;
-                    ui.displayMessage("\tTime successfully set!");
+                    ui.displayMessage("Time successfully set!");
+
                     stateManager.changeState(STATE.DisplayTime);
 
                 } catch (DateTimeParseException e) {
-                    ui.displayMessage("\tInvalid time format. Please use HH:mm format.");
+                    ui.displayMessage("Invalid time format. Please use HH:mm format.");
                 }
                 break;
 
             case ChangeDate:
-                ui.displayPrompt("\tWhat date would you like it to be? Please write it in yyyy-MM-dd format, for example (e.g. 2023-10-04):");
+                ui.displayPrompt("What date would you like it to be? Please write it in yyyy-MM-dd format, for example (e.g. 2023-10-04):");
                 String inputDate = ui.getUserInput();
 
                 try {
                     LocalDate newDate = LocalDate.parse(inputDate);
                     date.setDate(newDate);
                     dateHasBeenSet = true;
-                    ui.displayMessage("\tDate successfully set!");
+                    ui.displayMessage("Date successfully set!");
+
                     stateManager.changeState(STATE.DisplayDate);
 
                 } catch (DateTimeParseException e) {
-                    ui.displayMessage("\tInvalid date format. Please use yyyy-MM-dd format.");
+                    ui.displayMessage("Invalid date format. Please use yyyy-MM-dd format.");
                 }
                 break;
         }
